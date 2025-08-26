@@ -31,6 +31,8 @@
         - [aks](DevOps/Terraform/modules/aks/)
         - [acr](DevOps/Terraform/modules/container_registry/)
 
+        ![](ImagesReadme/01_aks_acr.png)
+
     - En caso de ingress controller se creo en el kubernetes mismo con helm:
 
         ```bash
@@ -55,6 +57,15 @@
     Adicionalmente
     
     - [namespace.yaml](DevOps/Kubernetes/namespace.yaml)
+    - Crear un secreto con las credenciales de acr:
+
+        ```bash
+        az acr credential show --name crmibancodev001
+        kubectl -n mibanco create secret docker-registry acr \
+            --docker-server=crmibancodev001.azurecr.io  \
+            --docker-username=<username>  \
+            --docker-password=<password>
+        ```
 
     Acerca del despliegue automático:
     [Ver lineas 44 a 45](https://github.com/victorgx2021/MiBancoApi/blob/main/.github/workflows/ci_cd.yml#L44-L45)
