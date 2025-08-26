@@ -1,0 +1,40 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mibanco-api
+spec:
+  replicas: {{ .Values.replicas | default 1 }}
+  selector:
+    matchLabels:
+      app: mibanco-api
+  template:
+    metadata:
+      labels:
+        app: mibanco-api
+    spec:
+      containers:
+        - name: mibanco-api
+          image: {{ .Values.containerRegistryHost }}/{{ .Values.imageName }}:{{ .Values.imageTag }}
+          ports:
+            - containerPort: 80
+          readinessProbe:
+            httpGet:
+              path: /
+              port: 80
+            initialDelaySeconds: 3
+            periodSeconds: 5
+          livenessProbe:
+            httpGet:
+              path: /
+              port: 80
+            initialDelaySeconds: 10
+            periodSeconds: 10
+          resources:
+            requests:
+              cpu: {{ .Values.resources.requests.cpu }}
+              memory: {{ .Values.resources.requests.memory }}
+            limits:
+              cpu: {{ .Values.resources.limits.cpu }}
+              memory:  {{ .Values.resources.limits.memory }}
+      imagePullSecrets:
+        - name: {{ .Values.imagePullSecrets | default  "acr" }}
