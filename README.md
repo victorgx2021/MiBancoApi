@@ -68,12 +68,18 @@
         ```
 
     Acerca del despliegue automático:
-    [Ver lineas 44 a 45](https://github.com/victorgx2021/MiBancoApi/blob/main/.github/workflows/ci_cd.yml#L44-L45)
+    [Ver lineas 47 a 48](https://github.com/victorgx2021/MiBancoApi/blob/main/.github/workflows/ci_cd.yml#L47-L48)
+
+    > [!WARNING]
+    > ⚠️ Desde la version con tag v1.3.0 esta deshabilitado ya que se usa helm, y la actualizacion de la imagen a usar es diferente, explicado en la ultima sección de este documento.
 
 4. Validación de pods desplegados en el AKS, así como también el ingress. (Ejem: Se puede crear un task que ejecute el comando # kubectl get pods, para su validación)
 
     - Pods desplegados:
-    [Ver lineas 47 a 48](https://github.com/victorgx2021/MiBancoApi/blob/main/.github/workflows/ci_cd.yml#L47-L48)
+    [Ver lineas 50 a 51](https://github.com/victorgx2021/MiBancoApi/blob/main/.github/workflows/ci_cd.yml#L50-L51)
+
+    > [!WARNING]
+    > ⚠️ Desde la version con tag v1.3.0 esta deshabilitado ya que se usa helm, helm con un tag "--wait", espera a que todo sea actualizado.
 
     - Ingress:
 
@@ -101,3 +107,15 @@
     - Pods desplegados
 
         ![](ImagesReadme/pods.png)
+
+---
+> [!IMPORTANT]
+> ## Adicionales
+# Helm
+En vez de solo usar despliegues, crear un [helm chart](DevOps/helm/).
+Para instalar, al estar en el directorio raiz del repositorio:
+```bash
+helm -n mibanco install mibanco ./DevOps/helm/
+```
+Con esto se debe actualizar el job en github action para el CD.
+[Ver lineas 53 a 59](https://github.com/victorgx2021/MiBancoApi/blob/main/.github/workflows/ci_cd.yml#L53-L59)

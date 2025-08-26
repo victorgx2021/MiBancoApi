@@ -31,6 +31,9 @@ jobs:
     needs: docker
 
     steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
       - name: Azure Login
         uses: azure/login@v2
         with:
@@ -41,8 +44,16 @@ jobs:
           resource-group: ${{ vars.AKS_RESOURCE_GROUP }}
           cluster-name: ${{ vars.AKS_CLUSTER_NAME }}
 
-      - name: Update deployment with new image
-        run: kubectl -n mibanco set image deployment/mibanco-api mibanco-api=${{ secrets.ACR_NAME }}.azurecr.io/mibanco:$(date +%Y_%m_%d)_${{ github.run_number }}
+      #- name: Update deployment with new image
+      #  run: kubectl -n mibanco set image deployment/mibanco-api mibanco-api=${{ secrets.ACR_NAME }}.azurecr.io/mibanco:$(date +%Y_%m_%d)_${{ github.run_number }}
       
-      - name: rollout status
-        run: kubectl -n mibanco rollout status deployment/mibanco-api
+      #- name: rollout status
+      #  run: kubectl -n mibanco rollout status deployment/mibanco-api
+
+      - name: Helm upgrade
+        run: |
+          helm upgrade mibanco ./DevOps/helm/ \
+            --namespace mibanco \
+            --reuse-values \
+            --set imageTag=$(date +%Y_%m_%d)_${{ github.run_number }} \
+            --wait
