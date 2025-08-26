@@ -59,12 +59,12 @@ terraform validate
 ### 2.4 Plan
 To see any changes that are required for your infrastructure.
 ```bash
-terraform plan
+terraform plan -var-file="var_values.json"
 ```
 
 ### 2.5 Apply
 ```bash
-terraform apply
+terraform apply -var-file="var_values.json"
 ```
 
 ### 2.6 Show
@@ -99,7 +99,7 @@ az account set --subscription "[subscription ID]"
 Next, create a Service Principal. A Service Principal is an application within Azure Active Directory with the
 authentication tokens Terraform needs to perform actions on your behalf.
 ```bash
-az ad sp create-for-rbac2 --name="some-name" --role="Contributor" --scopes="/subscriptions/<SUBSCRIPTION_ID>"
+az ad sp create-for-rbac --name="some-name" --role="Contributor" --scopes="/subscriptions/<SUBSCRIPTION_ID>"
 ```
 
 ### 3.4  List subscriptions

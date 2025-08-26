@@ -28,11 +28,6 @@ variable "environment" {
 variable "location" {
   type = string
   description = "Region of the Azure"
-
-  validation {
-    condition     = can(regex("^(westus|eastus)(2|3)?$", var.location))
-    error_message = "The location must be one of the following: 'westus', 'westus2', 'eastus', or 'eastus2'."
-  }
 }
 
 variable "iteration_rg" {
