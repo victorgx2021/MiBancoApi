@@ -31,7 +31,7 @@ module "aks" {
   aks_default_node = {
     name       = "default"
     size       = "standard_d2als_v6"
-    node_count = 2
+    node_count = 1
   }
   aks_authorize_ip_list = [
     "191.98.183.18/32",
