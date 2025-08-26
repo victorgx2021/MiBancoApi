@@ -46,7 +46,7 @@
 
 2. Compilación de microservicio y debe ser subido a un ACR.
 
-    [Ver lineas 21 a 28](https://github.com/victorgx2021/MiBancoApi/blob/main/.github/workflows/ci_cd.yml#L21-L28)
+    [Ver lineas 23 a 30](https://github.com/victorgx2021/MiBancoApi/blob/main/.github/workflows/ci_cd.yml#L23-L30)
 
 3. Despliegue automático de la aplicación en el clúster AKS configurado anteriormente. Se debe de contar con los siguientes manifiestos de kubernetes:
     - [Deployment.yml](DevOps/Kubernetes/deployment.yaml)
@@ -68,18 +68,18 @@
         ```
 
     Acerca del despliegue automático:
-    [Ver lineas 47 a 48](https://github.com/victorgx2021/MiBancoApi/blob/main/.github/workflows/ci_cd.yml#L47-L48)
+    [Ver lineas 49 a 50](https://github.com/victorgx2021/MiBancoApi/blob/main/.github/workflows/ci_cd.yml#L49-L50)
 
-    > [!WARNING]
-    > ⚠️ Desde la version con tag v1.3.0 esta deshabilitado ya que se usa helm, y la actualizacion de la imagen a usar es diferente, explicado en la ultima sección de este documento.
+> [!WARNING]
+> ⚠️ Desde la version con tag v1.3.0 esta deshabilitado ya que se usa helm, y la actualizacion de la imagen a usar es diferente, explicado en la ultima sección de este documento.
 
 4. Validación de pods desplegados en el AKS, así como también el ingress. (Ejem: Se puede crear un task que ejecute el comando # kubectl get pods, para su validación)
 
     - Pods desplegados:
-    [Ver lineas 50 a 51](https://github.com/victorgx2021/MiBancoApi/blob/main/.github/workflows/ci_cd.yml#L50-L51)
+    [Ver lineas 52 a 53](https://github.com/victorgx2021/MiBancoApi/blob/main/.github/workflows/ci_cd.yml#L52-L53)
 
-    > [!WARNING]
-    > ⚠️ Desde la version con tag v1.3.0 esta deshabilitado ya que se usa helm, helm con un tag "--wait", espera a que todo sea actualizado.
+> [!WARNING]
+> ⚠️ Desde la version con tag v1.3.0 esta deshabilitado ya que se usa helm, helm con un tag "--wait", espera a que todo sea actualizado.
 
     - Ingress:
 
@@ -118,4 +118,4 @@ Para instalar, al estar en el directorio raiz del repositorio:
 helm -n mibanco install mibanco ./DevOps/helm/
 ```
 Con esto se debe actualizar el job en github action para el CD.
-[Ver lineas 53 a 59](https://github.com/victorgx2021/MiBancoApi/blob/main/.github/workflows/ci_cd.yml#L53-L59)
+[Ver lineas 55 a 61](https://github.com/victorgx2021/MiBancoApi/blob/main/.github/workflows/ci_cd.yml#L55-L61)
