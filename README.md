@@ -131,3 +131,5 @@ en horario no laboral de los clientes (excepto claro hotfix urgentes).
     ![](ImagesReadme/env.png)
 
 - Segundo agregar el environment en el flujo de CD: [Ver lineas 34 a 35](https://github.com/victorgx2021/MiBancoApi/blob/main/.github/workflows/ci_cd.yml#L34-L35)
+
+![](ImagesReadme/approvalImage.png)
