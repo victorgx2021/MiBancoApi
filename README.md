@@ -133,3 +133,27 @@ en horario no laboral de los clientes (excepto claro hotfix urgentes).
 - Segundo agregar el environment en el flujo de CD: [Ver lineas 34 a 35](https://github.com/victorgx2021/MiBancoApi/blob/main/.github/workflows/ci_cd.yml#L34-L35)
 
 ![](ImagesReadme/approvalImage.png)
+
+### Self-hosted runners
+Un Runner auto hosteado puede tener herramientas pre instaladas que los Runners de Github no tienen.
+También se puede acceder a recursos locales que no están expuesto a internet.
+1. Agregar un nuevo Runner tiene opciones:
+    - Siguiendo la imagen te da los pasos para crear un Runner de manera manual.
+
+        ![](ImagesReadme/addRunner01.png)
+    - Crear como contenedor de docker: [Archivos docker](DevOps/Docker/Runner/)
+        - Tener en consideración que se debe tener un archivo .env
+
+            ```env
+            GH_TOKEN=AAAAAAAAAAAAAAAAAAAAAAAAAAA
+            GH_URL=https://github.com/victorgx2021/MiBancoApi
+            RUNNER_NAME=runner-1
+            RUNNER_LABELS=pull-request,sonarqube
+            ```
+
+            Se observa que existe un env "RUNNER_LABELS", esto es para que
+            nuestro Runner, tenga como etiquetas ese contenido (otros vienen por defecto):
+
+            ![](ImagesReadme/runnerLabels.png)
+
+            Para luego indicar en nuestro workflow en que runner correr: [Ver linea 10](https://github.com/victorgx2021/MiBancoApi/blob/main/.github/workflows/pull_request.yml#L10)

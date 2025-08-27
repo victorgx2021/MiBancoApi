@@ -1,0 +1,9 @@
+services:
+  agent:
+    build: .
+    container_name: runner-1
+    environment:
+      - GH_TOKEN=${GH_TOKEN}
+      - GH_URL=${GH_URL}
+      - RUNNER_NAME=${RUNNER_NAME}
+      - RUNNER_LABELS=${RUNNER_LABELS}

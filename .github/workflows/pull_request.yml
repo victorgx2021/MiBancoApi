@@ -1,0 +1,14 @@
+name: Pull request
+
+on:
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  docker:
+    runs-on: [self-hosted,pull-request]
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
