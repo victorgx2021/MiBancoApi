@@ -1,9 +1,9 @@
 name: Pull request
 
 on:
-  #pull_request:
-  #  branches:
-  #    - main
+  pull_request:
+    branches:
+      - main
   push:
     branches:
       - main
@@ -11,10 +11,6 @@ on:
 jobs:
   docker:
     runs-on: [self-hosted,pull-request]
-    permissions:
-      contents: read
-      pull-requests: write
-      checks: write
 
     steps:
       - name: Checkout repository
