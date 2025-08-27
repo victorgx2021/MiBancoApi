@@ -156,4 +156,4 @@ También se puede acceder a recursos locales que no están expuesto a internet.
 
             ![](ImagesReadme/runnerLabels.png)
 
-            Para luego indicar en nuestro workflow en que runner correr: [Ver linea 10](https://github.com/victorgx2021/MiBancoApi/blob/main/.github/workflows/pull_request.yml#L10)
+            Para luego indicar en nuestro workflow en que runner correr: [Ver linea 13](https://github.com/victorgx2021/MiBancoApi/blob/main/.github/workflows/pull_request.yml#L13)
