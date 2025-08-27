@@ -157,3 +157,17 @@ También se puede acceder a recursos locales que no están expuesto a internet.
             ![](ImagesReadme/runnerLabels.png)
 
             Para luego indicar en nuestro workflow en que runner correr: [Ver linea 13](https://github.com/victorgx2021/MiBancoApi/blob/main/.github/workflows/pull_request.yml#L13)
+
+### Workflow para pull request
+Al agregar un workflow para cuando se crea o actualiza un pull request
+([Ver linea 4 a 6](https://github.com/victorgx2021/MiBancoApi/blob/main/.github/workflows/pull_request.yml#L4-L6)), se puede observar:
+
+![](ImagesReadme/pull_request_ci.png)
+
+No podra aprobarse el pull request hasta que termine de ejecutarse el workflow o falle:
+
+![](ImagesReadme/pull_request_fail.png)
+
+Una vez que termine exitosamente el workflow, se puede aprobar el pull request (si no lo impide otras políticas):
+
+![](ImagesReadme/pull_request_valid.png)

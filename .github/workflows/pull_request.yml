@@ -1,20 +1,16 @@
 name: Pull request
 
 on:
-  #pull_request:
-  #  branches:
-  #    - main
+  pull_request:
+    branches:
+      - main
   push:
     branches:
       - main
 
 jobs:
-  docker:
+  SonarQube:
     runs-on: [self-hosted,pull-request]
-    permissions:
-      contents: read
-      pull-requests: write
-      checks: write
 
     steps:
       - name: Checkout repository
@@ -34,3 +30,9 @@ jobs:
             -Dsonar.projectName="Mi Banco"
           #projectBaseDir: # optional
           #scannerVersion: # optional, default is 7.2.0.5079
+
+      - name: SonarQube Quality Gate Check
+        uses: SonarSource/sonarqube-quality-gate-action@v1.2.0
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+          SONAR_HOST_URL: ${{ vars.SONAR_HOST_URL }}
