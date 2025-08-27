@@ -6,7 +6,7 @@ RUN useradd -m runner && mkdir -p /home/runner/actions-runner \
 WORKDIR /home/runner/actions-runner
 
 RUN apt-get update && \
-    apt-get install -y curl tar perl libicu72 unzip wget && \
+    apt-get install -y curl tar perl libicu72 unzip wget jq && \
     rm -rf /var/lib/apt/lists/*
 
 RUN curl -o actions-runner-linux-x64-2.328.0.tar.gz -L https://github.com/actions/runner/releases/download/v2.328.0/actions-runner-linux-x64-2.328.0.tar.gz
